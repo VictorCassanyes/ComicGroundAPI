@@ -1,9 +1,8 @@
-package com.proyecto.services;
+package com.proyecto.services.interfaces;
 
 import java.util.List;
 
 import com.proyecto.models.Comic;
-
 
 public interface IComicService {
 	

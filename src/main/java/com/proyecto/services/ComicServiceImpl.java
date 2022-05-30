@@ -14,6 +14,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.proyecto.models.Comic;
 import com.proyecto.repositories.ComicRepository;
+import com.proyecto.services.interfaces.IComicService;
 
 @Service
 public class ComicServiceImpl implements IComicService {
@@ -26,6 +27,12 @@ public class ComicServiceImpl implements IComicService {
 	public List<Comic> findAll() {
 		//Obtener todos los comics en la base de datos
 		return (List<Comic>) comicRepository.findAll();
+	}
+
+	@Override
+	@Transactional(readOnly=true)
+	public List<Comic> findByTitulo(String titulo) {
+		return comicRepository.findByTituloContaining(titulo);
 	}
 	
 	@Override
@@ -53,11 +60,5 @@ public class ComicServiceImpl implements IComicService {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
-
-	@Override
-	@Transactional(readOnly=true)
-	public List<Comic> findByTitulo(String titulo) {
-		return comicRepository.findByTituloContaining(titulo);
 	}
 }

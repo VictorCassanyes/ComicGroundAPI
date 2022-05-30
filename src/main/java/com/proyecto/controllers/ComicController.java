@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.proyecto.models.Comic;
-import com.proyecto.services.IComicService;
+import com.proyecto.services.interfaces.IComicService;
 
 @CrossOrigin(origins= {"http://192.168.0.11:8080"})
 @RestController
@@ -25,19 +25,16 @@ public class ComicController {
 		return comicService.findAll();
 	}
 	
-	@GetMapping("/comics/guardarNuevosDatos")
-	public String saveComics() {
-		comicService.saveAll();
-		return "Se han guardado los nuevos comics";
-	}
-	
 	@GetMapping("/comics/{titulo}")
 	public List<Comic> getComicsByTitulo(@PathVariable String titulo) {
 		return comicService.findByTitulo(titulo);
 	}
 	
-	@GetMapping("/error")
-	public String showError() {
-		return "Ha ocurrido un error";
-	}
+	//	Para subir los datos de la API de ComicVine (Modificarlo para usarlo de administración)
+	
+//	@GetMapping("/comics/guardarNuevosComics")
+//	public String saveComics() {
+//		comicService.saveAll();
+//		return "Se han guardado los nuevos comics";
+//	}
 }

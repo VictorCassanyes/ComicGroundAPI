@@ -18,7 +18,6 @@ import com.google.gson.annotations.SerializedName;
 			name="ComicRepository.findByTituloContaining",
 			query="select c from Comic c where titulo like '%?%'"
 		)
-
 public class Comic implements Serializable {
 	
 	private static final long serialVersionUID = -5827561531700913343L;
