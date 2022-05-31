@@ -18,7 +18,7 @@ import com.proyecto.models.Usuario;
 import com.proyecto.services.interfaces.IUsuarioService;
 
 @RestController
-@RequestMapping("/ComicGround")
+@RequestMapping("/comicground")
 public class UsuarioController {
 
 	@Autowired

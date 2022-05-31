@@ -15,7 +15,7 @@ import com.proyecto.models.Comic;
 import com.proyecto.services.interfaces.IComicService;
 
 @RestController
-@RequestMapping("/ComicGround")
+@RequestMapping("/comicground")
 public class ComicController {
 
 	@Autowired

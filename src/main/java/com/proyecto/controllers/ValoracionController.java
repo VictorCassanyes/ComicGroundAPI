@@ -17,7 +17,7 @@ import com.proyecto.models.Valoracion;
 import com.proyecto.services.interfaces.IValoracionService;
 
 @RestController
-@RequestMapping("/ComicGround")
+@RequestMapping("/comicground")
 public class ValoracionController {
 	
 	@Autowired

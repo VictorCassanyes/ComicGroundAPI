@@ -17,7 +17,7 @@ import com.proyecto.models.Comentario;
 import com.proyecto.services.interfaces.IComentarioService;
 
 @RestController
-@RequestMapping("/ComicGround")
+@RequestMapping("/comicground")
 public class ComentarioController {
 
 	
