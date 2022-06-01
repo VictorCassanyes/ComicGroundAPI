@@ -15,7 +15,7 @@
 	<description>Proyecto final grado medio</description>
 	<properties>
 		<java.version>11</java.version>
-		<!-- He tenido que bajar la versión de hibernate debido a un problema con 'containing'.
+		<!-- He tenido que bajar la versión de hibernate debido a un problema con el query 'containing'.
 		Más información: https://github.com/spring-projects/spring-data-jpa/issues/2476 -->
 		<hibernate.version>5.6.4.Final</hibernate.version>
 	</properties>
@@ -44,6 +44,16 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+		    <groupId>org.springframework.security</groupId>
+		    <artifactId>spring-security-jwt</artifactId>
+		    <version>1.1.1.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security.oauth</groupId>
+			<artifactId>spring-security-oauth2</artifactId>
+			<version>2.3.6.RELEASE</version>
 		</dependency>
 		<dependency>
 		    <groupId>com.google.code.gson</groupId>
