@@ -11,4 +11,6 @@ public interface ValoracionRepository extends CrudRepository<Valoracion, Integer
 	//Repositorio CRUD que implementa métodos automáticamente (como por ejemplo findAll y saveAll)
 	
 	public List<Valoracion> findByComicId(Integer idComic);
+
+	public Valoracion findByComicIdAndUsuarioId(Integer idComic, Integer idUsuario);
 }

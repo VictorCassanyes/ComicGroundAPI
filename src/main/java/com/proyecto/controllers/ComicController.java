@@ -7,7 +7,8 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,21 +23,43 @@ public class ComicController {
 	private IComicService comicService;
 	
 	@GetMapping("/comics")
-	public List<Comic> getComics() {
-		return comicService.findAll();
-	}
-	
-	@GetMapping("/comics/{titulo}")
-	public ResponseEntity<?> getComicsByTitulo(@PathVariable String titulo) {
+	public ResponseEntity<?> obtenerComicsRecientes() {
+		
 		List<Comic> comics=null;
+		try {
+			comics=comicService.findLastComics();
+		}catch(DataAccessException e) {
+			return new ResponseEntity<String>(e.getMostSpecificCause().getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+		}
 		
 		try {
-			comics=comicService.findByTitulo(titulo);
+			//Comprobar si hay algún cómic
+			comics.get(0);
+		} catch(IndexOutOfBoundsException e) {
+			return new ResponseEntity<String>("No se ha encontrado ningun comic", HttpStatus.NOT_FOUND);
+		}
+		
+		return new ResponseEntity<List<Comic>>(comics, HttpStatus.OK);
+	}
+
+	@PostMapping("/comics")
+	public ResponseEntity<?> obtenerComicsPorTitulo(@RequestBody String titulo) {
+		List<Comic> comics=null;
+		//Quitar las comillas
+		String tituloSinComillas=titulo.replace("\"", "");
+		//Si no ha escrito nada no devolver nada
+		if(tituloSinComillas.equals("")) {
+			return new ResponseEntity<String>("No se ha encontrado ningun comic", HttpStatus.NOT_FOUND);
+		}
+		
+		try {
+			comics=comicService.findByTitulo(tituloSinComillas);
 		} catch(DataAccessException e) {
 			return new ResponseEntity<String>(e.getMostSpecificCause().getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
 		try {
+			//Comprobar si hay algún cómic
 			comics.get(0);
 		} catch(IndexOutOfBoundsException e) {
 			return new ResponseEntity<String>("No se ha encontrado ningun comic", HttpStatus.NOT_FOUND);

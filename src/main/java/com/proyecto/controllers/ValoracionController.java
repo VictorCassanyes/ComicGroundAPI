@@ -24,7 +24,7 @@ public class ValoracionController {
 	private IValoracionService valoracionService;
 	
 	@GetMapping("/valoraciones/{idComic}")
-	public ResponseEntity<?> getValoracionesByComicId(@PathVariable Integer idComic) {
+	public ResponseEntity<?> obtenerValoracionesPorIdDeComic(@PathVariable Integer idComic) {
 		List<Valoracion> valoraciones=null;
 		try {
 			valoraciones=valoracionService.findByComicId(idComic);
@@ -41,8 +41,8 @@ public class ValoracionController {
 		return new ResponseEntity<List<Valoracion>>(valoraciones, HttpStatus.OK);
 	}
 	
-	@PostMapping("/valoraciones/guardarNuevaValoracion")
-	public ResponseEntity<String> saveValoracion(@RequestBody Valoracion valoracion) {
+	@PostMapping("/valoraciones/valorar")
+	public ResponseEntity<String> valorar(@RequestBody Valoracion valoracion) {
 		try {
 			valoracionService.save(valoracion);
 		} catch(DataAccessException e) {

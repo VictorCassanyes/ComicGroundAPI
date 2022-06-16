@@ -24,15 +24,15 @@ public class ComicServiceImpl implements IComicService {
 	
 	@Override
 	@Transactional(readOnly=true)
-	public List<Comic> findAll() {
-		//Obtener todos los comics en la base de datos
-		return (List<Comic>) comicRepository.findAll();
+	public List<Comic> findLastComics() {
+		//Obtener los últimos 100 cómics de la base de datos
+		return (List<Comic>) comicRepository.findTop100ByOrderByIdDesc();
 	}
 
 	@Override
 	@Transactional(readOnly=true)
 	public List<Comic> findByTitulo(String titulo) {
-		return comicRepository.findByTituloContaining(titulo);
+		return comicRepository.findTop100ByTituloContaining(titulo);
 	}
 	
 	@Override

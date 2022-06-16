@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class MainController {
 	
 	@GetMapping("/comicground")
-	public String getMensaje() {
+	public String mensajeBasico() {
 		return "ComicGround - App de ocio sobre cómics";
 	}
 }

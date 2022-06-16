@@ -9,4 +9,5 @@ public interface IValoracionService {
 	public List<Valoracion> findByComicId(Integer idComic);
 	
 	public Valoracion save(Valoracion valoracion);
+	
 }

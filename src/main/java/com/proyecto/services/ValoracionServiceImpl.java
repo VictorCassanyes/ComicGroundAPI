@@ -25,6 +25,12 @@ public class ValoracionServiceImpl implements IValoracionService {
 	@Override
 	@Transactional
 	public Valoracion save(Valoracion valoracion) {
-		return valoracionRepository.save(valoracion);
+		Valoracion valoracionBD=valoracionRepository.findByComicIdAndUsuarioId(valoracion.getComic().getId(), valoracion.getUsuario().getId());
+		if(valoracionBD==null) {
+			return valoracionRepository.save(valoracion);
+		}
+		valoracionBD.setPuntuacion(valoracion.getPuntuacion());
+		return valoracionRepository.save(valoracionBD);
+
 	}
 }

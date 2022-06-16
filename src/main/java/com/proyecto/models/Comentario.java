@@ -1,7 +1,6 @@
 package com.proyecto.models;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,8 +11,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="comentar")
@@ -40,8 +37,7 @@ public class Comentario implements Serializable {
 	private String texto;
 	
 	@Column(name="fecha_creacion")
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date fechaCreacion;
+	private String fechaCreacion;
 
 	public Comentario() {}
 	
@@ -77,11 +73,11 @@ public class Comentario implements Serializable {
 		this.texto = texto;
 	}
 
-	public Date getFechaCreacion() {
+	public String getFechaCreacion() {
 		return fechaCreacion;
 	}
 
-	public void setFechaCreacion(Date fechaCreacion) {
+	public void setFechaCreacion(String fechaCreacion) {
 		this.fechaCreacion = fechaCreacion;
 	}
 	

@@ -16,12 +16,12 @@ import com.google.gson.reflect.TypeToken;
 
 public class ConvertirJson {
 	
-	public static void main(String[] args) {
+	public static void obtenerYConvertir() {
 		
 		try {
 			//Hacer la petición a la API de ComicVine con mi API Key y lo que quiero buscar
 			String apiKey="39a3e2e44c5dc5386be927669d157c5ded28a94f";
-			String name="fantastic%20%four";
+			String name="Spider-man";
 			URL url = new URL("https://comicvine.gamespot.com/api/issues/?api_key="+apiKey+"&filter=name:"+name+"&field_list=name,image&format=json&limit=10");
 			HttpURLConnection con = (HttpURLConnection) url.openConnection();
 			con.setRequestMethod("GET");

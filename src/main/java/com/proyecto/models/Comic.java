@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.NamedQuery;
+import javax.persistence.NamedNativeQuery;
 import javax.persistence.Table;
 
 import com.google.gson.annotations.SerializedName;
@@ -14,14 +14,14 @@ import com.google.gson.annotations.SerializedName;
 @Entity
 @Table(name="comics")
 	//Query propia. Sirve para encontrar comics que contengan en su título el parámetro dado
-@NamedQuery(
-			name="ComicRepository.findByTituloContaining",
+@NamedNativeQuery(
+			name="ComicRepository.findTop100ByTituloContaining",
 			query="select c from Comic c where titulo like '%?%'"
 		)
 public class Comic implements Serializable {
 	
-	private static final long serialVersionUID = -5827561531700913343L;
-	
+	private static final long serialVersionUID = 559674395863669429L;
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;

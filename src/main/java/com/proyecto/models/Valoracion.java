@@ -1,26 +1,29 @@
 package com.proyecto.models;
 
 import java.io.Serializable;
-import java.util.Date;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="valorar")
-@NamedQuery(
-		name="ValoracionRepository.findByComicId",
-		query="select v from Valoracion v where comic.id like ?1"
-	)
+@NamedQueries({	
+	@NamedQuery(
+			name="ValoracionRepository.findByComicId",
+			query="select v from Valoracion v where comic.id like ?1"
+		),
+	@NamedQuery(
+			name="ValoracionRepository.findValoracion",
+			query="select v from Valoracion v where comic.id like ?1 and usuario.id like ?2"
+		)
+})
 public class Valoracion implements Serializable {
 
 	private static final long serialVersionUID = 1700429166736660996L;
@@ -37,11 +40,7 @@ public class Valoracion implements Serializable {
 	@JoinColumn(name="id_usuario")
 	private Usuario usuario;
 	
-	private int puntuacion;
-	
-	@Column(name="fecha_creacion")
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date fechaCreacion;
+	private float puntuacion;
 
 	public Valoracion() {}
 	
@@ -69,20 +68,12 @@ public class Valoracion implements Serializable {
 		this.usuario = usuario;
 	}
 
-	public int getPuntuacion() {
+	public float getPuntuacion() {
 		return puntuacion;
 	}
 
-	public void setPuntuacion(int puntuacion) {
+	public void setPuntuacion(float puntuacion) {
 		this.puntuacion = puntuacion;
-	}
-
-	public Date getFechaCreacion() {
-		return fechaCreacion;
-	}
-
-	public void setFechaCreacion(Date fechaCreacion) {
-		this.fechaCreacion = fechaCreacion;
 	}
 	
 }

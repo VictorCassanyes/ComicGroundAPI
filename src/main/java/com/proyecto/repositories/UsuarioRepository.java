@@ -9,4 +9,6 @@ public interface UsuarioRepository extends CrudRepository<Usuario, Integer> {
 	//Repositorio CRUD que implementa métodos automáticamente (como por ejemplo findAll y saveAll)
 	
 	public Usuario findByNombreDeUsuario(String nombreDeUsuario);
+	
+	public Usuario findByCorreo(String correo);
 }

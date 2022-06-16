@@ -25,7 +25,7 @@ public class ComentarioController {
 	private IComentarioService comentarioService;
 	
 	@GetMapping("/comentarios/{idComic}")
-	public ResponseEntity<?> getComentariosByComicId(@PathVariable Integer idComic) {	
+	public ResponseEntity<?> obtenerComentariosPorIdDeComic(@PathVariable Integer idComic) {	
 		List<Comentario> comentarios=null;
 		
 		try {
@@ -43,8 +43,8 @@ public class ComentarioController {
 		return new ResponseEntity<List<Comentario>>(comentarios, HttpStatus.OK);
 	}
 	
-	@PostMapping("/comentarios/guardarComentario")
-	public ResponseEntity<String> saveComentario(@RequestBody Comentario comentario) {
+	@PostMapping("/comentarios/comentar")
+	public ResponseEntity<String> comentar(@RequestBody Comentario comentario) {
 		try {
 			comentarioService.save(comentario);
 		} catch(DataAccessException e) {
