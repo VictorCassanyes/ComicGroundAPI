@@ -1,0 +1,2 @@
+# ComicGroundAPI
+API de ComicGround
