@@ -12,6 +12,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
+@SuppressWarnings("serial")
 @Entity
 @Table(name="valorar")
 @NamedQueries({	
@@ -26,8 +27,6 @@ import javax.persistence.Table;
 })
 public class Valoracion implements Serializable {
 
-	private static final long serialVersionUID = 1700429166736660996L;
-	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;

@@ -8,7 +8,8 @@ public interface IComicService {
 	
 	public List<Comic> findLastComics();
 	
-	public void saveAll();
-	
 	public List<Comic> findByTitulo(String titulo);
+	
+	//Si tuviera administradores
+	//public void saveAll();
 }

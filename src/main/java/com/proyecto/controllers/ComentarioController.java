@@ -24,6 +24,7 @@ public class ComentarioController {
 	@Autowired
 	private IComentarioService comentarioService;
 	
+	//Para encontrar todos los comentarios hechos sobre un cómic
 	@GetMapping("/comentarios/{idComic}")
 	public ResponseEntity<?> obtenerComentariosPorIdDeComic(@PathVariable Integer idComic) {	
 		List<Comentario> comentarios=null;
@@ -43,6 +44,7 @@ public class ComentarioController {
 		return new ResponseEntity<List<Comentario>>(comentarios, HttpStatus.OK);
 	}
 	
+	//Para guardar un nuevo comentario
 	@PostMapping("/comentarios/comentar")
 	public ResponseEntity<String> comentar(@RequestBody Comentario comentario) {
 		try {

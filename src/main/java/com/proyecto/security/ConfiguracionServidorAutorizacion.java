@@ -29,10 +29,10 @@ public class ConfiguracionServidorAutorizacion extends AuthorizationServerConfig
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
 		//Guardar en memoria un cliente que va a ser mi aplicación, y definir como van a ser los tokens
 		clients.inMemory().withClient(ConstantesSeguridad.NOMBRE_CLIENTE).secret("{noop}"+ConstantesSeguridad.CLAVE_CLIENTE)
-		.authorizedGrantTypes("password", "refresh_token")
+		.authorizedGrantTypes("password")
 		.scopes("write", "read")
-		//Tiempo de validez del token y tiempo para su actualización
-		.accessTokenValiditySeconds(86400).refreshTokenValiditySeconds(86400);
+		//Tiempo de validez del token (una semana)
+		.accessTokenValiditySeconds(604800);
 	}
 
 	@Override

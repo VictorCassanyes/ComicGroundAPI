@@ -1,12 +1,8 @@
 package com.proyecto.services.interfaces;
 
-import java.util.List;
-
 import com.proyecto.models.Usuario;
 
 public interface IUsuarioService {
-
-	public List<Usuario> findAll();
 	
 	public Usuario findById(Integer id);
 	
@@ -20,8 +16,8 @@ public interface IUsuarioService {
 
 	public boolean checkAuth(String authorization);
 
-	public boolean checkNombreDeUsuario(String nombreDeUsuario);
+	public boolean checkNombreDeUsuario(Usuario usuario);
 	
-	public boolean checkCorreo(String correo);
+	public boolean checkCorreo(Usuario usuario);
 	
 }

@@ -23,6 +23,7 @@ public class ValoracionController {
 	@Autowired
 	private IValoracionService valoracionService;
 	
+	//Para encontrar todas las valoraciones hechas sobre un cómic
 	@GetMapping("/valoraciones/{idComic}")
 	public ResponseEntity<?> obtenerValoracionesPorIdDeComic(@PathVariable Integer idComic) {
 		List<Valoracion> valoraciones=null;
@@ -41,6 +42,7 @@ public class ValoracionController {
 		return new ResponseEntity<List<Valoracion>>(valoraciones, HttpStatus.OK);
 	}
 	
+	//Para guardar una nueva valoración
 	@PostMapping("/valoraciones/valorar")
 	public ResponseEntity<String> valorar(@RequestBody Valoracion valoracion) {
 		try {

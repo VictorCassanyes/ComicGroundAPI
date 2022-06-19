@@ -22,6 +22,7 @@ public class ComicController {
 	@Autowired
 	private IComicService comicService;
 	
+	//Para devolver los últimos 100 cómics añádidos a la base de datos
 	@GetMapping("/comics")
 	public ResponseEntity<?> obtenerComicsRecientes() {
 		
@@ -42,6 +43,7 @@ public class ComicController {
 		return new ResponseEntity<List<Comic>>(comics, HttpStatus.OK);
 	}
 
+	//Para devolver como máximo 100 cómics encontrados que contengan en el título el String
 	@PostMapping("/comics")
 	public ResponseEntity<?> obtenerComicsPorTitulo(@RequestBody String titulo) {
 		List<Comic> comics=null;
@@ -68,11 +70,11 @@ public class ComicController {
 		return new ResponseEntity<List<Comic>>(comics, HttpStatus.OK);
 	}
 	
-	//	Para subir los datos de la API de ComicVine (Modificarlo para usarlo de administración)
-	
-//	@GetMapping("/comics/guardarNuevosComics")
-//	public String saveComics() {
-//		comicService.saveAll();
-//		return "Se han guardado los nuevos comics";
-//	}
+	//	Para guardar nuevos cómics obtenidos de ComicVine (Pensado para ser usado por los administradores)
+	//	
+	//	@GetMapping("/comics/guardarNuevosComics")
+	//	public ResponseEntity<String> saveComics() {
+	//		comicService.saveAll();
+	//		return ResponseEntity<String>("Se han guardado los cómics", HttpStatus.OK);
+	//	}
 }

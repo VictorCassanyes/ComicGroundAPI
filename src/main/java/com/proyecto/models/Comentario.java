@@ -12,6 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
+@SuppressWarnings("serial")
 @Entity
 @Table(name="comentar")
 @NamedQuery(
@@ -19,8 +20,6 @@ import javax.persistence.Table;
 		query="select c from Comentario c where comic.id like ?1 order by fechaCreacion asc"
 	)
 public class Comentario implements Serializable {
-
-	private static final long serialVersionUID = 6461102736445356984L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

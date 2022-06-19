@@ -14,12 +14,11 @@ public class ConfiguracionServidorRecursos extends ResourceServerConfigurerAdapt
 	public void configure(HttpSecurity http) throws Exception {
 		//Permitir cualquier petición a estos endpoints
 		http.authorizeRequests().antMatchers(HttpMethod.GET, "/comicground").permitAll()
-		//En estos compruebo yo manualmente que vengan de la aplicación cliente que deberían (Mi app)
+		//En este endpoint compruebo yo manualmente que vengan de la aplicación cliente que deberían (Mi app)
 		.antMatchers(HttpMethod.POST, "/comicground/usuarios/registro").permitAll()
-		.antMatchers(HttpMethod.POST, "/comicground/usuarios/inicioSesion").permitAll()
 		//Necesario autenticarse para el resto de endpoints
 		.anyRequest().authenticated();
 		
-		//No incluyo roles porque no les voy a dar uso
+		//Aquí se incluirían los roles necesarios si tuviese también administradores
 	}
 }

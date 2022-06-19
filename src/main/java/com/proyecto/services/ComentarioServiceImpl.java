@@ -16,12 +16,14 @@ public class ComentarioServiceImpl implements IComentarioService {
 	@Autowired
 	private ComentarioRepository comentarioRepository;
 	
+	//Obtener comentarios respecto a un cómic específico
 	@Override
 	@Transactional(readOnly=true)
 	public List<Comentario> findByComicId(Integer idComic) {
 		return (List<Comentario>) comentarioRepository.findByComicId(idComic);
 	}
 
+	//Guardar un comentario
 	@Override
 	@Transactional
 	public Comentario save(Comentario comentario) {

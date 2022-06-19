@@ -11,6 +11,7 @@ import javax.persistence.Table;
 
 import com.google.gson.annotations.SerializedName;
 
+@SuppressWarnings("serial")
 @Entity
 @Table(name="comics")
 	//Query propia. Sirve para encontrar comics que contengan en su título el parámetro dado
@@ -19,8 +20,6 @@ import com.google.gson.annotations.SerializedName;
 			query="select c from Comic c where titulo like '%?%'"
 		)
 public class Comic implements Serializable {
-	
-	private static final long serialVersionUID = 559674395863669429L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

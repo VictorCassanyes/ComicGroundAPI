@@ -20,7 +20,7 @@ public class ConfiguracionSeguridad extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private UserDetailsService usuarioService;
 
-	//@Autowired para inyectar el componente: "AuthenticationManagerBuilder"
+	//@Autowired por la inyección del componente: "AuthenticationManagerBuilder"
 	@Override
 	@Autowired
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
